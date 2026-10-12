@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Receipts Beta Waitlist</title>
+<meta name="description" content="Client approvals for Buffer. Clients review posts from one link, comment, and sign off. You keep a receipt of exactly what they approved. Join the beta waitlist.">
+<meta name="theme-color" content="#0d0f0c">
+<meta property="og:title" content="Receipts — client approvals for Buffer">
+<meta property="og:description" content="One link for clients to review, comment and sign off on your Buffer posts. Join the beta waitlist.">
+<meta property="og:image" content="media/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: paper hero with the product film as the one loud object → ink "messy middle" → paper steps (video stills) → roadmap receipt → ink signup. Single brand look (the app's own tokens), light paper ground. */
+:root{
+  --ink:#0d0f0c; --ink-2:#181b16; --ink-3:#23271f;
+  --paper:#f7f6f1; --paper-2:#ecebe4; --white:#ffffff;
+  --lime:#cafd00; --lime-ink:#354600;
+  --muted:#696a65; --muted-d:rgba(247,246,241,.62); --line:rgba(13,15,12,.12); --line-d:rgba(247,246,241,.1);
+  --coral:#f95630; --stamp:#4f7a00;
+  --f-display:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Manrope',ui-sans-serif,system-ui,sans-serif;
+  --f-ui:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'Space Mono',ui-monospace,Menlo,monospace;
+  --wrap:1180px; --gut:clamp(16px,4vw,40px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.03em;line-height:1.02;text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{font:700 12px/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase}
+.mark-hl{background:linear-gradient(var(--lime),var(--lime)) no-repeat 0 62%/100% 78%;padding-inline:.08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(247,246,241,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand strong{display:block;font:700 18px/1 var(--f-display);letter-spacing:-.03em}
+.brand small{display:block;font:700 10px/1.2 var(--f-ui);color:var(--muted);margin-top:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;font:800 15px/1 var(--f-ui);padding:15px 22px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .15s ease,background .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-lime{background:var(--lime);color:var(--lime-ink)}
+.btn-lime:hover{background:#d8ff3d}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-sm{padding:11px 16px;font-size:13px}
+
+/* hero */
+.hero{padding-block:clamp(36px,6vw,76px) clamp(48px,7vw,96px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,7fr);gap:clamp(28px,4vw,56px);align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero .eyebrow{color:var(--muted);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{display:inline-block;background:var(--ink);color:var(--lime);padding:6px 10px;border-radius:99px}
+.hero h1{font-size:clamp(38px,4.3vw,58px)}
+.lede{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:34em}
+.lede b{color:var(--ink);font-weight:700}
+.inline-form{display:flex;gap:8px;background:var(--white);border:1.5px solid var(--ink);border-radius:999px;padding:6px;max-width:480px}
+.inline-form input{flex:1;min-width:0;border:0;background:transparent;font:600 16px var(--f-body);padding:0 14px;color:var(--ink)}
+.inline-form input:focus{outline:none}
+.inline-form:focus-within{box-shadow:0 0 0 4px rgba(202,253,0,.7)}
+.fine{font-size:13px;color:var(--muted)}
+.film{position:relative;border-radius:22px;overflow:hidden;background:var(--ink);box-shadow:0 30px 70px -20px rgba(13,15,12,.45),0 0 0 1px var(--line);aspect-ratio:16/9;min-width:0}
+.film video{width:100%;height:100%;object-fit:cover}
+.sound{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:7px;border:0;border-radius:99px;background:rgba(13,15,12,.72);color:var(--paper);font:800 12px/1 var(--f-ui);padding:9px 13px;cursor:pointer;backdrop-filter:blur(6px)}
+.sound svg{width:15px;height:15px}
+.success{display:grid;gap:6px;background:var(--ink);color:var(--paper);border-radius:20px;padding:18px 22px;max-width:480px}
+.success strong{font:700 20px/1.2 var(--f-display);color:var(--lime)}
+.success span{font-size:14px;color:var(--muted-d)}
+.err{color:#c2381a;font-size:14px;font-weight:700}
+
+/* messy middle */
+.dark{background:var(--ink);color:var(--paper)}
+.messy{padding-block:clamp(64px,9vw,120px)}
+.messy .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.messy .eyebrow{color:var(--lime)}
+.messy h2{font-size:clamp(34px,4.4vw,56px);margin-top:16px}
+.messy p{color:var(--muted-d);margin-top:20px;max-width:30em}
+.messy p.kicker{color:var(--paper);font-weight:700}
+.pings{display:grid;gap:12px;min-width:0}
+.ping{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:center;background:var(--ink-2);border:1px solid var(--line-d);border-radius:20px;padding:12px 16px 12px 12px;box-shadow:0 18px 40px -18px rgba(0,0,0,.8)}
+.ping:nth-child(1){transform:rotate(-1.4deg) translateX(4%)}
+.ping:nth-child(2){transform:rotate(1deg) translateX(-2%)}
+.ping:nth-child(3){transform:rotate(-.6deg) translateX(8%)}
+.ping:nth-child(4){transform:rotate(1.3deg)}
+.ping .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#fff}
+.ping .ic svg{width:26px;height:26px}
+.ping small{display:block;font:800 11px/1 var(--f-ui);letter-spacing:.1em;text-transform:uppercase;color:rgba(247,246,241,.42)}
+.ping b{display:block;font:700 17px/1.35 var(--f-body);margin-top:6px;overflow-wrap:anywhere}
+.ping.final{background:var(--paper);color:var(--ink);border-color:transparent}
+.ping.final small{color:var(--muted)}
+
+/* how */
+.how{padding-block:clamp(64px,9vw,120px)}
+.sec-head{display:grid;gap:14px;max-width:40em;margin-bottom:clamp(32px,4vw,52px)}
+.sec-head .eyebrow{color:var(--muted)}
+.sec-head h2{font-size:clamp(34px,4.4vw,56px)}
+.sec-head p{color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;padding:0;margin:0}
+.step{display:grid;grid-template-rows:auto auto 1fr;gap:14px;min-width:0}
+.step figure{margin:0;border-radius:18px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);aspect-ratio:784/720}
+.step figure img{width:100%;height:100%;object-fit:cover}
+.step .n{font:700 12px/1 var(--f-mono);letter-spacing:.16em;display:inline-flex;align-items:center;gap:8px}
+.step .n span{background:var(--ink);color:var(--lime);border-radius:99px;padding:5px 9px}
+.step h3{font-size:24px;margin-top:10px}
+.step p{color:var(--muted);font-size:15.5px;margin-top:6px}
+
+/* roadmap receipt */
+.next{padding-block:0 clamp(64px,9vw,120px)}
+.next .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center;border-top:1px solid var(--line);padding-top:clamp(56px,7vw,96px)}
+.next h2{font-size:clamp(32px,4vw,50px);margin-top:16px}
+.next p{color:var(--muted);margin-top:18px;max-width:32em}
+.next .eyebrow{color:var(--muted)}
+.receipt{position:relative;background:#fffef8;font:400 14px/1.5 var(--f-mono);color:var(--ink);padding:26px 26px 92px;max-width:380px;justify-self:center;width:100%;box-shadow:0 24px 50px -24px rgba(13,15,12,.35);transform:rotate(1.2deg);
+  --z:10px;-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/calc(2*var(--z)) 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/calc(2*var(--z)) 100%}
+.receipt .r-head{text-align:center;font-weight:700;letter-spacing:.2em}
+.receipt .r-sub{text-align:center;font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.receipt hr{border:0;border-top:2px dashed rgba(13,15,12,.3);margin:14px 0}
+.receipt .r-code{text-align:center;font:700 24px/1.2 var(--f-mono);letter-spacing:.08em}
+.receipt dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;margin:0}
+.receipt dt{color:var(--muted)}
+.receipt dd{margin:0;text-align:right;font-weight:700;overflow-wrap:anywhere}
+.receipt .soon dt,.receipt .soon dd{color:var(--ink)}
+.receipt .soon{background:rgba(202,253,0,.35);margin-inline:-10px;padding:8px 10px;border-radius:6px}
+.stampmark{position:absolute;right:50%;bottom:30px;transform:translateX(50%) rotate(-6deg);border:3px solid var(--stamp);color:var(--stamp);font:700 15px/1 var(--f-display);letter-spacing:.12em;padding:8px 12px;border-radius:8px;opacity:.85}
+.example{font:700 11px/1 var(--f-mono);letter-spacing:.14em;color:var(--muted);text-align:center;margin-top:14px}
+
+/* join */
+.join{padding-block:clamp(64px,9vw,120px)}
+.join .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,72px);align-items:start}
+.join .eyebrow{color:var(--lime)}
+.join h2{font-size:clamp(34px,4.4vw,56px);margin-top:16px}
+.join .intro p{color:var(--muted-d);margin-top:18px;max-width:28em}
+.join ul.perks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:10px}
+.join ul.perks li{display:flex;gap:10px;align-items:baseline;color:var(--paper);font-weight:600}
+.join ul.perks li::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--lime);flex:none;transform:translateY(-1px)}
+.card{background:var(--ink-2);border:1px solid var(--line-d);border-radius:24px;padding:clamp(20px,3vw,32px);display:grid;gap:24px;min-width:0}
+.field{display:grid;gap:10px;border:0;padding:0;margin:0;min-width:0}
+.field label,.field legend{font:800 14px/1.3 var(--f-ui);color:var(--paper);padding:0}
+.field legend span,.field label span{font-weight:700;color:var(--muted-d)}
+.field input[type=email]{width:100%;border:1.5px solid var(--line-d);background:var(--ink);color:var(--paper);border-radius:14px;padding:15px 16px;font:600 16px var(--f-body)}
+.field input[type=email]::placeholder{color:rgba(247,246,241,.35)}
+.field input[type=email]:focus{outline:none;border-color:var(--lime)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.chip span{display:block;border:1.5px solid var(--line-d);border-radius:99px;padding:10px 15px;font:700 14px/1 var(--f-ui);color:var(--paper);transition:background .15s,border-color .15s,color .15s}
+.chip input:checked+span{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
+.chip input:focus-visible+span{outline:3px solid var(--lime);outline-offset:2px}
+.card .btn{width:100%;padding:18px}
+.card .fine{color:var(--muted-d)}
+.hp{position:absolute;left:-9999px}
+
+footer{background:var(--ink);color:var(--muted-d);border-top:1px solid var(--line-d)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;padding-block:28px;font-size:13px}
+footer .brand strong{color:var(--paper)}
+footer .brand small{color:var(--muted-d)}
+
+@media (max-width:980px){
+  .hero .wrap,.messy .wrap,.next .wrap,.join .wrap{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .film{max-width:760px}
+}
+@media (max-width:720px){
+  .film{aspect-ratio:9/16;max-height:78vh;max-width:min(100%,calc(78vh * 9 / 16));justify-self:center;width:100%}
+  .nav .btn{display:none}
+}
+@media (max-width:560px){
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .inline-form{flex-direction:column;border-radius:20px}
+  .inline-form input{padding:12px 10px}
+  .ping:nth-child(n){transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Receipts home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="17" fill="#cafd00"/><path d="M20 15h24v35l-4-3-4 3-4-3-4 3-4-3-4 3V15Z" fill="#0d0f0c"/><path d="M25 25h14M25 32h14M25 39h9" stroke="#cafd00" stroke-width="3" stroke-linecap="round"/></svg>
+      <span><strong>Receipts</strong><small>for Buffer users</small></span>
+    </a>
+    <a class="btn btn-ink btn-sm" href="#join">Join the waitlist</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pill">Beta waitlist</span> Client approvals for Buffer</p>
+        <h1>Client approvals for Buffer. <span class="mark-hl">Without another content calendar.</span></h1>
+        <p class="lede">Your posts already live in Buffer. Receipts gives clients <b>one link</b> to review them, comment, and sign off, and keeps a <b>receipt</b> of exactly what they approved.</p>
+        <form class="inline-form wl-form" name="beta-waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" aria-label="Join the beta waitlist">
+          <input type="hidden" name="form-name" value="beta-waitlist">
+          <input type="hidden" name="source" value="hero">
+          <input type="hidden" name="clients" value="">
+          <input type="hidden" name="approvals_today" value="">
+          <p class="hp"><label>Leave this empty <input name="bot-field" id="hero-bot"></label></p>
+          <label for="hero-email" class="hp">Email address</label>
+          <input id="hero-email" type="email" name="email" required autocomplete="email" placeholder="you@yourstudio.com">
+          <button class="btn btn-lime" type="submit">Join the waitlist</button>
+        </form>
+        <p class="fine">One email when the beta opens. No spam, and no Buffer API key needed to sign up.</p>
+      </div>
+      <div class="film">
+        <video id="film" muted loop playsinline preload="metadata" poster="media/poster-16x9.jpg" aria-label="30-second walkthrough of Receipts: importing posts from Buffer, sending a client one link, collecting comments, stamping the final approval, and printing the receipt."></video>
+        <button class="sound" type="button" id="sound" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path id="sound-wave" d="m22 9-6 6M16 9l6 6"/></svg>
+          <span>Sound on</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark messy" aria-labelledby="messy-h">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Sound familiar?</p>
+        <h2 id="messy-h">The post is in Buffer. The approval is somewhere else.</h2>
+        <p>A thumbs-up in team chat. An email that says “looks good.” A text from three revisions ago. A client approving a version that already changed.</p>
+        <p class="kicker">Receipts keeps the conversation and the decision attached to the exact post being reviewed.</p>
+      </div>
+      <div class="pings" aria-label="Examples of scattered approvals">
+        <div class="ping"><div class="ic" style="background:#3b82f6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></div><div><small>Email · 9:14 AM</small><b>“Looks good!”</b></div></div>
+        <div class="ping"><div class="ic" style="background:#8b6cf6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 4 7 20M17 4l-2 16M4 9h16M3 15h16"/></svg></div><div><small>Team chat · Yesterday</small><b>“Approved!”</b></div></div>
+        <div class="ping"><div class="ic" style="background:#34c759"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-7l-5 4v-4a3 3 0 0 1-1-2Z"/></svg></div><div><small>Text · 3 revisions ago</small><b>“Can we change line two?”</b></div></div>
+        <div class="ping final"><div class="ic" style="background:#f95630"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></div><div><small>Everyone, eventually</small><b>“Wait, this isn’t the version I approved.”</b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-h">Buffer in. <span class="mark-hl">Approval out.</span></h2>
+        <p>One small workflow between Buffer and your client. Buffer stays where you write and schedule.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <figure><img src="media/step1.jpg" width="784" height="720" loading="lazy" alt="The Receipts approval queue showing four posts imported from Buffer, filtered by a needs-approval tag."></figure>
+          <div><p class="n"><span>01</span> IMPORT</p><h3>Sync from Buffer</h3></div>
+          <p>Tag the posts that need a yes. They come straight in, so there’s nothing to rebuild.</p>
+        </li>
+        <li class="step">
+          <figure><img src="media/step2.jpg" width="784" height="720" loading="lazy" alt="Posts assigned to clients Barrio Brew Co. and Southside Night Market, with review rooms sent."></figure>
+          <div><p class="n"><span>02</span> SEND</p><h3>Send one link</h3></div>
+          <p>Assign posts to a client and send their room. They open it without an account or a login.</p>
+        </li>
+        <li class="step">
+          <figure><img src="media/step3.jpg" width="784" height="720" loading="lazy" alt="A client approval room on a phone with team comments, a six-digit owner code, and an APPROVED stamp."></figure>
+          <div><p class="n"><span>03</span> APPROVE</p><h3>One person signs off</h3></div>
+          <p>Anyone on their team can comment. The final yes takes the owner’s 6-digit code.</p>
+        </li>
+        <li class="step">
+          <figure><img src="media/step4.jpg" width="784" height="720" loading="lazy" alt="A printed approval receipt listing the client, post, approver, time, and SHA-256 fingerprint."></figure>
+          <div><p class="n"><span>04</span> RECORD</p><h3>Keep the receipt</h3></div>
+          <p>Every approval saves who, when, and the exact version they saw. The post stays in Buffer, ready to go.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="next" aria-labelledby="next-h">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">On the roadmap</p>
+        <h2 id="next-h">Next: get paid for the posts they approved.</h2>
+        <p>We’re working on deal and invoice tracking that lives on the receipt, so a brand deal, its approval, and its invoice sit in one record. It isn’t in the beta yet. Waitlist members help decide what ships first.</p>
+      </div>
+      <div>
+        <div class="receipt" role="img" aria-label="Example receipt: RCP-84N2K7, Barrio Brew Co., Fall tap list launch, approved by Marisol Vega, with brand deal 450 dollars and invoice sent marked as coming next.">
+          <p class="r-head">RECEIPTS</p>
+          <p class="r-sub">CLIENT APPROVAL RECORD</p>
+          <hr>
+          <p class="r-code">RCP-84N2K7</p>
+          <hr>
+          <dl>
+            <dt>CLIENT</dt><dd>Barrio Brew Co.</dd>
+            <dt>POST</dt><dd>Fall tap list launch</dd>
+            <dt>APPROVED BY</dt><dd>Marisol Vega</dd>
+            <dt>VERSION</dt><dd>v3 · 7cb61e9b…</dd>
+          </dl>
+          <hr>
+          <dl class="soon">
+            <dt>BRAND DEAL</dt><dd>$450.00</dd>
+            <dt>INVOICE #0047</dt><dd>SENT</dd>
+          </dl>
+          <span class="stampmark">COMING NEXT</span>
+        </div>
+        <p class="example">EXAMPLE RECEIPT · SAMPLE DATA</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark join" id="join" aria-labelledby="join-h">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Join the waitlist</p>
+        <h2 id="join-h">Got posts in Buffer that need a client’s yes?</h2>
+        <p>We’re opening the beta to small groups of Buffer users who handle client or stakeholder approvals. Leave your email and you’ll hear when it’s your turn.</p>
+        <ul class="perks">
+          <li>Free during the beta</li>
+          <li>Your answers shape what gets built next</li>
+          <li>Built on Buffer’s API, so your posts stay in Buffer</li>
+        </ul>
+      </div>
+      <form class="card wl-form" name="beta-waitlist" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" aria-label="Join the beta waitlist">
+        <input type="hidden" name="form-name" value="beta-waitlist">
+        <input type="hidden" name="source" value="signup">
+        <input type="hidden" name="approvals_today" id="approvals-today" value="">
+        <p class="hp"><label>Leave this empty <input name="bot-field" id="join-bot"></label></p>
+        <div class="field">
+          <label for="join-email">Email</label>
+          <input id="join-email" type="email" name="email" required autocomplete="email" placeholder="you@yourstudio.com">
+        </div>
+        <fieldset class="field">
+          <legend>How many clients do you get approvals from? <span>Optional</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="clients" value="1" id="c-1"><span>Just 1</span></label>
+            <label class="chip"><input type="radio" name="clients" value="2-5" id="c-2"><span>2–5</span></label>
+            <label class="chip"><input type="radio" name="clients" value="6-15" id="c-3"><span>6–15</span></label>
+            <label class="chip"><input type="radio" name="clients" value="16+" id="c-4"><span>16+</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Where do approvals happen today? <span>Optional, pick any</span></legend>
+          <div class="chips" id="where">
+            <label class="chip"><input type="checkbox" value="Email" id="w-1"><span>Email</span></label>
+            <label class="chip"><input type="checkbox" value="Texts" id="w-2"><span>Texts</span></label>
+            <label class="chip"><input type="checkbox" value="Slack/Teams" id="w-3"><span>Slack or Teams</span></label>
+            <label class="chip"><input type="checkbox" value="Shared docs" id="w-4"><span>Shared docs</span></label>
+            <label class="chip"><input type="checkbox" value="DMs" id="w-5"><span>DMs</span></label>
+            <label class="chip"><input type="checkbox" value="Approval tool" id="w-6"><span>Another approval tool</span></label>
+          </div>
+        </fieldset>
+        <button class="btn btn-lime" type="submit">Join the waitlist</button>
+        <p class="fine">We only use your email for Receipts beta news. Unsubscribe anytime.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="17" fill="#cafd00"/><path d="M20 15h24v35l-4-3-4 3-4-3-4 3-4-3-4 3V15Z" fill="#0d0f0c"/><path d="M25 25h14M25 32h14M25 39h9" stroke="#cafd00" stroke-width="3" stroke-linecap="round"/></svg>
+      <span><strong>Receipts</strong><small>Built by Ben Campbell · Nobody Creative</small></span>
+    </a>
+    <p>Receipts is an independent tool built on Buffer’s API. Not affiliated with Buffer.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* film: vertical cut on phones, horizontal elsewhere */
+  var v=document.getElementById('film'),mq=window.matchMedia('(max-width: 720px)'),reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  function pick(){var vert=mq.matches,src=vert?'media/receipts-9x16.mp4':'media/receipts-16x9.mp4';
+    if(v.getAttribute('src')===src)return;v.poster=vert?'media/poster-9x16.jpg':'media/poster-16x9.jpg';v.src=src;
+    if(!reduce.matches){var p=v.play();if(p&&p.catch)p.catch(function(){});}}
+  pick();if(mq.addEventListener)mq.addEventListener('change',pick);
+  if(reduce.matches){v.controls=true;}
+  var sb=document.getElementById('sound');
+  sb.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    sb.setAttribute('aria-pressed',String(!v.muted));sb.querySelector('span').textContent=v.muted?'Sound on':'Sound off';
+    document.getElementById('sound-wave').setAttribute('d',v.muted?'m22 9-6 6M16 9l6 6':'M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14');});
+
+  /* "where" chips → one field */
+  var where=document.getElementById('where'),hid=document.getElementById('approvals-today');
+  where.addEventListener('change',function(){hid.value=[].slice.call(where.querySelectorAll('input:checked')).map(function(i){return i.value}).join(', ');});
+
+  /* Netlify Forms via fetch, with an inline confirmation */
+  [].forEach.call(document.querySelectorAll('.wl-form'),function(f){
+    f.addEventListener('submit',function(e){e.preventDefault();
+      var btn=f.querySelector('button[type=submit]'),email=f.querySelector('input[type=email]').value.trim(),old=f.querySelector('.err');if(old)old.remove();
+      btn.disabled=true;btn.textContent='Joining…';
+      var body=new URLSearchParams(new FormData(f)).toString();
+      function done(preview){var box=document.createElement('div');box.className='success';box.setAttribute('role','status');
+        box.innerHTML='<strong>You’re on the list.</strong><span></span>';box.querySelector('span').textContent=(preview?'Preview only, nothing was saved. ':'')+'We’ll email '+email+' when the beta opens.';
+        f.replaceWith(box);}
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+        .then(function(r){if(r.ok)return done(false);throw new Error(r.status);})
+        .catch(function(){
+          if(!/netlify|receipts/.test(location.hostname)){done(true);return;}
+          btn.disabled=false;btn.textContent='Join the waitlist';var p=document.createElement('p');p.className='err';p.textContent='That didn’t go through. Check your connection and try again.';f.appendChild(p);});
+    });});
+})();
+</script>
+</body>
+</html>
